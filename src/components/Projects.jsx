@@ -5,35 +5,23 @@ import "../styles/projects.scss";
 const projects = [
   {
     title: "my-genni",
-    description: "A Google Gemini-based API project that answers user queries via the Gemini API and stores their responses. It is a frontend project with functionality similar to Gemini.",
-    image: `${process.env.PUBLIC_URL}/assets/genni.png`,
+    description:
+      "A Google Gemini-based API project that answers user queries via the Gemini API and stores their responses. It is a frontend project with functionality similar to Gemini.",
   },
   {
     title: "i-Green",
-    description: "A full-stack e-commerce web application that offers two services, each available in Free and Pro versions. Users can access free services, and if they require additional functionality, they can purchase Pro features.",
-    image: `${process.env.PUBLIC_URL}/assets/igreen.png`,
+    description:
+      "A full-stack e-commerce web application that offers two services, each available in Free and Pro versions. Users can access free services, and if they require additional functionality, they can purchase Pro features.",
   },
   {
     title: "Personal A.I",
-    description: "An AI system capable of performing tasks such as saving dates on a calendar, opening and reading PDFs, summarizing content, and handling advanced AI/ML tasks, including natural language conversations.",
-    image: `${process.env.PUBLIC_URL}/assets/chatbot.png`,
+    description:
+      "An AI system capable of performing tasks such as saving dates on a calendar, opening and reading PDFs, summarizing content, and handling advanced AI/ML tasks, including natural language conversations.",
   },
 ];
 
-
-const floatingImages = [
-  "assets/AI.png",
-  "assets/Framer.png",
-  "assets/Python.png",
-  "assets/React.png",
-];
-
-const floatingballs = [
-  "assets/three.png",
-  "assets/js.png",
-];
-
-
+const floatingImages = ["assets/AI.png", "assets/Framer.png", "assets/Python.png", "assets/React.png"];
+const floatingballs = ["assets/three.png", "assets/js.png"];
 
 const Projects = () => {
   const [currentProject, setCurrentProject] = useState(0);
@@ -50,10 +38,10 @@ const Projects = () => {
     <motion.section
       className="projects"
       id="projects"
-      initial={{ opacity: 0, y: 50 }} // Initially hidden
-      whileInView={{ opacity: 1, y: 0 }} // Fade in when in view
-      transition={{ duration: 0.8, ease: "easeOut" }} // Smooth transition
-      viewport={{ once: true, amount: 0.2 }} // Trigger animation when 20% of it is visible
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.2 }}
     >
       <h2>My Projects</h2>
 
@@ -65,28 +53,30 @@ const Projects = () => {
             src={src}
             alt={`Floating Image ${index}`}
             className="floating-icon"
-            animate={{ y: [0, -20, 0] }} // Bouncing effect
+            animate={{ y: [0, -20, 0] }}
             transition={{
               repeat: Infinity,
               duration: 2,
               ease: "easeInOut",
-              delay: index * 0.3, // Staggered delay for smooth floating
+              delay: index * 0.3,
             }}
           />
         ))}
       </div>
 
       <div className="carousel-container">
-        <button className="nav-button left" onClick={prevProject}>‹</button>
+        <button className="nav-button left" onClick={prevProject}>
+          ‹
+        </button>
 
         <div className="project-wrapper">
           <ProjectCard key={currentProject} project={projects[currentProject]} />
         </div>
 
-        <button className="nav-button right" onClick={nextProject}>›</button>
+        <button className="nav-button right" onClick={nextProject}>
+          ›
+        </button>
       </div>
-
-
 
       {/* Floating Images */}
       <div className="floating-images">
@@ -96,12 +86,12 @@ const Projects = () => {
             src={src}
             alt={`Floating Image ${index}`}
             className="floating-icon"
-            animate={{ y: [0, -20, 0] }} // Bouncing effect
+            animate={{ y: [0, -20, 0] }}
             transition={{
               repeat: Infinity,
               duration: 2,
               ease: "easeInOut",
-              delay: index * 0.3, // Staggered delay for smooth floating
+              delay: index * 0.3,
             }}
           />
         ))}
@@ -134,11 +124,10 @@ const ProjectCard = ({ project }) => {
         x.set(0);
         y.set(0);
       }}
-      initial={{ opacity: 0, y: 50 }} // Initially hidden and below
-      animate={{ opacity: 1, y: 0 }} // Fade in and move up
-      transition={{ duration: 0.5 }} // Smooth transition
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
     >
-      <img src={project.image} alt={project.title} />
       <h3>{project.title}</h3>
       <p>{project.description}</p>
     </motion.div>
