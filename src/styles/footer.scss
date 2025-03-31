@@ -1,0 +1,15 @@
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    background-color: #222;
+    color: white;
+    position: relative; /* Ensures it stays in the normal flow */
+    margin-top: 50px; /* Adds space after the Contact section */
+    border-radius: 15%;
+
+    @media (max-width: 480px) {
+        font-size: 0.9rem;
+      }
+  }
+  

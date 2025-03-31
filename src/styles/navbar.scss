@@ -1,0 +1,86 @@
+@import "./variables";
+
+:root {
+  --navbar-height: 70px; // Adjust based on your actual navbar height
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  padding: 0.2rem 1rem;
+  background: transparent;
+  backdrop-filter: blur(10px);
+  color: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  backdrop-filter: blur(10px); // Add blur effect for a glassmorphism look
+
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: $primary-color;
+    height: 100%;
+  }
+
+  .menu-icon {
+    font-size: 1.8rem;
+    cursor: pointer;
+    display: none;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+
+    li {
+      margin: 0 1.5rem;
+
+      a {
+        text-decoration: none;
+        color: $text-color;
+        font-size: 1.2rem;
+        transition: 0.3s;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+
+    
+  }
+
+  @media (max-width: 768px) {
+    .menu-icon {
+      display: block;
+    }
+
+    .nav-links {
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 200px;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.9);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+
+      &.open {
+        transform: translateX(0);
+      }
+
+      li {
+        margin: 1.5rem 0;
+      }
+    }
+  }
+}

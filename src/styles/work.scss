@@ -1,0 +1,52 @@
+.work {
+    text-align: center;
+    padding: 4rem 0;
+
+    .work-image {
+      width: 400px; // Adjust size as needed
+      height: auto;
+      margin: 10px 0;
+      border-radius: 10px;
+
+      @media (max-width: 480px) {
+        max-width: 250px;
+      }
+    }
+    
+    .work-card h3 {
+      color: yellow; // Makes the title yellow
+      font-weight: bold;
+  }
+    
+    .work-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+  
+    .work-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 10px;
+      width: 50%;
+      text-align: center;
+      transition: all 0.5s ease;
+
+      @media (max-width: 1024px) {
+        width: 80%;
+      }
+    
+      @media (max-width: 768px) {
+        width: 90%;
+      }
+    
+      @media (max-width: 480px) {
+        width: 100%;
+        padding: 1rem;
+      }
+    }
+  }
+  

@@ -1,0 +1,68 @@
+@import "./variables";
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-height: calc(100vh - var(--navbar-height)); // Ensures it doesn't exceed the navbar
+  height: 100vh; // Allows flexibility
+  padding-top: var(--navbar-height); // Pushes content below the navbar
+    
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    .floating-text {
+      display: inline-block;
+      animation: floatText 3s ease-in-out infinite;
+  }
+  
+  @keyframes floatText {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-5px); } // Moves slightly up
+      100% { transform: translateY(0); }
+  }
+  
+
+
+    .hero-box {
+      // Dark blue only around text
+      padding: 2rem 3rem;
+      border-radius: 10px;
+      display: inline-block; // Ensures it wraps around the text
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      span {
+        color: $primary-color;
+      }
+    }
+
+    p {
+      font-size: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      font-size: 1.2rem;
+      background: $primary-color;
+      color: #000;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: 0.3s;
+
+      &:hover {
+        background: darken($primary-color, 10%);
+      }
+    }
+  }
+}

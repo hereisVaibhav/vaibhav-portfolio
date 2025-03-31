@@ -1,0 +1,93 @@
+@import "./variables";
+
+.projects {
+  text-align: center;
+  padding: 4rem 2rem;
+
+  h2 {
+    margin-bottom: 3rem; // Add space below "My Projects"
+    font-size: 2.5rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: white;
+  }
+
+  .projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px; // Space between cards
+    justify-content: center; // Centers the cards horizontally
+    align-items: center; // Aligns cards in the center
+    width: 100%; // Ensures full width usage
+    max-width: 1200px; // Prevents too wide layout
+    margin: 0 auto; // Centers the entire section
+    padding: 20px;
+  }
+
+  .project-card {
+    width: 300px; // Adjust width
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    margin: 10px auto; // Ensures spacing and centers the cards
+
+    &:hover {
+      transform: translateY(-10px);
+    }
+
+    @media (max-width: 768px) {
+      padding: 1rem;
+    }
+
+    @media (max-width: 480px) {
+      padding: 0.8rem;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1%;
+    }
+
+    h3 {
+      color: #ffcc00;
+      font-size: 1.5rem;
+    }
+
+    p {
+      color: white;
+      font-size: 1rem;
+    }
+
+    &:hover {
+      transform: scale(1.05) rotateY(10deg);
+    }
+  }
+
+  .floating-images {
+    position: sticky; // Ensures it stays in the normal document flow
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 1rem; // Moves it below "My Projects"
+    margin-bottom: 1rem;
+    z-index: 1; // Keeps it above the background but below cards
+
+    .floating-icon {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      border-radius: 50%;
+
+      @media (max-width: 480px) {
+        width: 40px;
+      }
+    }
+  }
+}
