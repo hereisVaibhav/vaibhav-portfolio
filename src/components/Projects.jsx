@@ -5,20 +5,21 @@ import "../styles/projects.scss";
 const projects = [
   {
     title: "my-genni",
-    description: "A Google Gemini-based API project that answers user queries via the Gemini API and stores their responses. It is a frontend project with functionality similar to Gemini.",
-    image: "/assets/genni.png",
+    description: "A Google Gemini-based API project...",
+    image: `${process.env.PUBLIC_URL}/assets/genni.png`,
   },
   {
     title: "i-Green",
-    description: "A full-stack e-commerce web application that offers two services, each available in Free and Pro versions. Users can access free services, and if they require additional functionality, they can purchase Pro features.",
-    image: "/assets/igreen.png",
+    description: "A full-stack e-commerce web application...",
+    image: `${process.env.PUBLIC_URL}/assets/igreen.png`,
   },
   {
     title: "Personal A.I",
-    description: "An AI system capable of performing tasks such as saving dates on a calendar, opening and reading PDFs, summarizing content, and handling advanced AI/ML tasks, including natural language conversations.",
-    image: "/assets/chatbot.png",
+    description: "An AI system capable of performing tasks...",
+    image: `${process.env.PUBLIC_URL}/assets/chatbot.png`,
   },
 ];
+
 
 const floatingImages = [
   "assets/AI.png",
