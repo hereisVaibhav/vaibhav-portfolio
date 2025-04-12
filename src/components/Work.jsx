@@ -10,7 +10,7 @@ const workData = [
     link: "https://ijsrem.com/download/python-driven-software-enhancing-the-growth-and-yield-of-crop-production/"
   },
   { 
-    title: "Ex-Team Lead at COSMIC365.AI", 
+    title: "Ex-Team Lead Intern at COSMIC365.AI", 
     description: "Managed daily operations, conducted weekly progress meetings on website development, and handled frontend tasks for COSMIC365.AI."
   },
 ];
