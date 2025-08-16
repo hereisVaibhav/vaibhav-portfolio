@@ -11,7 +11,7 @@ const projects = [
   {
     title: "E-HEALTH CARE: PERSONAL DIAGNOSIS & DETECTION",
     description:
-      "A full-stack e-commerce web application that offers two services, each available in Free and Pro versions. Users can access free services, and if they require additional functionality, they can purchase Pro features.",
+      "Implemented an advanced e-healthcare software solution enabling early detection and diagnosis of potential health issues, improving user health outcomes.Construct and maintained a relational database of 30,000+ health issues and evidence-based cures, enabling a 20% reduction in inaccurate diagnoses among junior medical staff.",
   },
   {
     title: "Personal A.I Agent",
