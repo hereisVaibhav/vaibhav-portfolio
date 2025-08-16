@@ -9,7 +9,7 @@ const projects = [
       "A Google Gemini-based API project that answers user queries via the Gemini API and stores their responses. It is a frontend project with functionality similar to Gemini.",
   },
   {
-    title: "I-Green",
+    title: "E-HEALTH CARE: PERSONAL DIAGNOSIS & DETECTION",
     description:
       "A full-stack e-commerce web application that offers two services, each available in Free and Pro versions. Users can access free services, and if they require additional functionality, they can purchase Pro features.",
   },
