@@ -1,88 +1,81 @@
 @import "./variables";
 
 .projects {
-  text-align: center;
-  padding: 4rem 2rem;
-
-  h2 {
-    margin-bottom: 3rem; // Add space below "My Projects"
-    font-size: 2.5rem;
-  }
+  // Inherits global strict centering
 
   .section-title {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: white;
-  }
-
-  .projects-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 50px; // Space between cards
-    justify-content: center; // Centers the cards horizontally
-    align-items: center; // Aligns cards in the center
-    width: 100%; // Ensures full width usage
-    max-width: 1200px; // Prevents too wide layout
-    margin: 0 auto; // Centers the entire section
-    padding: 20px;
-  }
-
-  .project-card {
-    width: 300px; // Adjust width
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    cursor: pointer;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    margin: 10px auto; // Ensures spacing and centers the cards
-
-    &:hover {
-      transform: translateY(-10px);
-    }
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 8rem; // Increased to prevent overlap with circular orbit
+    @include text-gradient;
 
     @media (max-width: 768px) {
-      padding: 1rem;
+      font-size: 2.5rem;
+      margin-bottom: 5rem;
+    }
+  }
+
+  .gallery-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .project-card-square {
+    width: 250px;
+    height: 250px;
+    flex-shrink: 0; // Prevent shrinking
+    background: $glass-bg;
+    backdrop-filter: blur($backdrop-blur);
+    border: 1px solid $glass-border;
+    border-radius: 20px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: $glass-shadow;
+    transition: all 0.3s ease;
+    overflow: hidden;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: $secondary-color;
+      box-shadow: 0 0 30px rgba($secondary-color, 0.3);
+
+      h3 {
+        color: $secondary-color;
+      }
     }
 
-    @media (max-width: 480px) {
-      padding: 0.8rem;
+    .icon-wrapper {
+      width: 70px;
+      height: 70px;
+      margin-bottom: 1rem;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
     }
 
-    
     h3 {
-      color: #ffcc00;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: $text-color;
+      transition: color 0.3s ease;
     }
 
     p {
-      color: white;
-      font-size: 1rem;
-    }
-
-    &:hover {
-      transform: scale(1.05) rotateY(10deg);
-    }
-  }
-
-  .floating-images {
-    position: sticky; // Ensures it stays in the normal document flow
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 1rem; // Moves it below "My Projects"
-    margin-bottom: 1rem;
-    z-index: 1; // Keeps it above the background but below cards
-
-    .floating-icon {
-      width: 60px;
-      height: 60px;
-      object-fit: contain;
-      border-radius: 50%;
-
-      @media (max-width: 480px) {
-        width: 40px;
-      }
+      font-size: 0.9rem;
+      color: $text-muted;
+      line-height: 1.4;
     }
   }
 }

@@ -1,47 +1,47 @@
+@import "./variables";
+
 .contact {
-    text-align: center;
-    padding: 50px 0;
-    
-    color: white;
+  // Inherits global strict centering
 
-    .social-icon {
-        width: 60px; /* Adjust size if needed */
-        height: 10px;
-        border-radius: 50%; /* Makes the image round */
-        object-fit: cover;
+  .section-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    @include text-gradient;
 
-        @media (max-width: 480px) {
-          width: 40px;
-        }
-      }
-      
-  
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-  
-    .phone-dial {
-      font-size: 3rem;
-      display: inline-block;
-      margin-bottom: 20px;
-
-      @media (max-width: 480px) {
-        font-size: 1.8rem;
-      }
-    }
-  
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      
-      img {
-        width: 50px;
-        height: 50px;
-        cursor: pointer;
-        transition: transform 0.3s ease-in-out;
-      }
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
     }
   }
-  
+
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .phone-dial {
+    font-size: 4rem;
+    filter: drop-shadow(0 0 10px rgba($primary-color, 0.5));
+  }
+
+  .social-links {
+    display: flex;
+    gap: 2rem;
+
+    .social-icon {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.1));
+      cursor: pointer;
+    }
+  }
+
+  .contact-text {
+    font-size: 1.2rem;
+    color: $text-muted;
+    max-width: 600px;
+  }
+}

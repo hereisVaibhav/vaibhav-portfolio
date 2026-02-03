@@ -1,52 +1,89 @@
+@import "./variables";
+
 .work {
+  // Inherits global strict centering
+
+  .section-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 8rem; // Increased to prevent overlap with circular orbit
+    @include text-gradient;
+
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+      margin-bottom: 5rem;
+    }
+  }
+
+  .gallery-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .work-card-square {
+    width: 250px;
+    height: 250px;
+    flex-shrink: 0; // Prevent shrinking
+    background: $glass-bg;
+    backdrop-filter: blur($backdrop-blur);
+    border: 1px solid $glass-border;
+    border-radius: 20px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 4rem 0;
+    cursor: pointer;
+    box-shadow: $glass-shadow;
+    transition: all 0.3s ease;
+    overflow: hidden;
 
-    .work-image {
-      width: 400px; // Adjust size as needed
-      height: auto;
-      margin: 10px 0;
-      border-radius: 10px;
-
-      @media (max-width: 480px) {
-        max-width: 250px;
-      }
+    &:hover {
+      box-shadow: 0 0 25px rgba($primary-color, 0.4);
+      border-color: rgba($primary-color, 0.5);
     }
-    
-    .work-card h3 {
-      color: yellow; // Makes the title yellow
-      font-weight: bold;
-  }
-    
-    .work-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-  
-    .work-card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      padding: 2rem;
-      border-radius: 10px;
-      width: 50%;
-      text-align: center;
-      transition: all 0.5s ease;
 
-      @media (max-width: 1024px) {
-        width: 80%;
-      }
-    
-      @media (max-width: 768px) {
-        width: 90%;
-      }
-    
-      @media (max-width: 480px) {
+    .icon-wrapper {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 1rem;
+
+      img {
         width: 100%;
-        padding: 1rem;
+        height: 100%;
+        object-fit: contain;
+        // filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); // Removed light shadow for white background
       }
     }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: $text-color;
+    }
+
+    h4 {
+      font-size: 0.9rem;
+      color: $primary-color;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 0.8rem;
+      color: $text-muted;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      line-clamp: 4;
+      /* Added for compatibility */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
   }
-  
+}

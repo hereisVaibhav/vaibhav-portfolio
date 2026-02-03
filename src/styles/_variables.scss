@@ -1,2 +1,41 @@
-$primary-color: #00A8E8;
-$text-color: #fff;
+// 🎨 Modern Light Color Palette
+$bg-color: #ffffff;
+$primary-color: #007bb8; // Slightly darker blue for contrast
+$secondary-color: #b529c9; // Slightly darker purple
+$accent-color: #00c875;
+$text-color: #1a1a1a;
+$text-muted: #555555;
+
+// 🔮 Glassmorphism Variables (for Light Mode)
+$glass-bg: rgba(255, 255, 255, 0.7);
+$glass-border: rgba(0, 0, 0, 0.1);
+$glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+$backdrop-blur: 10px;
+
+// 📏 Spacing & Radii
+$border-radius: 16px;
+$section-padding: 80px 0;
+
+// ✨ Mixins
+@mixin glass-card {
+    background: $glass-bg;
+    backdrop-filter: blur($backdrop-blur);
+    -webkit-backdrop-filter: blur($backdrop-blur);
+    border: 1px solid $glass-border;
+    border-radius: $border-radius;
+    box-shadow: $glass-shadow;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        border-color: rgba($primary-color, 0.4);
+        box-shadow: 0 0 20px rgba($primary-color, 0.15);
+        transform: translateY(-5px);
+    }
+}
+
+@mixin text-gradient {
+    background: linear-gradient(90deg, $primary-color, $secondary-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}

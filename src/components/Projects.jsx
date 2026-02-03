@@ -1,136 +1,50 @@
-import { motion, useMotionValue, useTransform } from "framer-motion";
-import { useState } from "react";
+import React from "react";
+import OrbitGallery from "./CircularGallery";
 import "../styles/projects.scss";
 
-const projects = [
-  {
-    title: "My-Genni",
-    description:
-      "A Google Gemini-based API project that answers user queries via the Gemini API and stores their responses. It is a frontend project with functionality similar to Gemini.",
-  },
-  {
-    title: "E-HEALTH CARE: PERSONAL DIAGNOSIS & DETECTION",
-    description:
-      "Implemented an advanced e-healthcare software solution enabling early detection and diagnosis of potential health issues, improving user health outcomes.Construct and maintained a relational database of 30,000+ health issues and evidence-based cures, enabling a 20% reduction in inaccurate diagnoses among junior medical staff.",
-  },
-  {
-    title: "Personal A.I Agent",
-    description:
-      "An AI system capable of performing tasks such as saving dates on a calendar, opening and reading PDFs, summarizing content, and handling advanced AI/ML tasks, including natural language conversations.",
-  },
-];
-
-const floatingImages = ["assets/AI.png", "assets/Framer.png", "assets/Python.png", "assets/React.png"];
-const floatingballs = ["assets/three.png", "assets/js.png"];
-
 const Projects = () => {
-  const [currentProject, setCurrentProject] = useState(0);
-
-  const nextProject = () => {
-    setCurrentProject((prev) => (prev + 1) % projects.length);
-  };
-
-  const prevProject = () => {
-    setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length);
-  };
-
-  return (
-    <motion.section
-      className="projects"
-      id="projects"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      viewport={{ once: true, amount: 0.2 }}
-    >
-      <h2>My Projects</h2>
-
-      {/* Floating Images */}
-      <div className="floating-images">
-        {floatingImages.map((src, index) => (
-          <motion.img
-            key={index}
-            src={src}
-            alt={`Floating Image ${index}`}
-            className="floating-icon"
-            animate={{ y: [0, -20, 0] }}
-            transition={{
-              repeat: Infinity,
-              duration: 2,
-              ease: "easeInOut",
-              delay: index * 0.3,
-            }}
-          />
-        ))}
-      </div>
-
-      <div className="carousel-container">
-        <button className="nav-button left" onClick={prevProject}>
-          ‹
-        </button>
-
-        <div className="project-wrapper">
-          <ProjectCard key={currentProject} project={projects[currentProject]} />
-        </div>
-
-        <button className="nav-button right" onClick={nextProject}>
-          ›
-        </button>
-      </div>
-
-      {/* Floating Images */}
-      <div className="floating-images">
-        {floatingballs.map((src, index) => (
-          <motion.img
-            key={index}
-            src={src}
-            alt={`Floating Image ${index}`}
-            className="floating-icon"
-            animate={{ y: [0, -20, 0] }}
-            transition={{
-              repeat: Infinity,
-              duration: 2,
-              ease: "easeInOut",
-              delay: index * 0.3,
-            }}
-          />
-        ))}
-      </div>
-    </motion.section>
-  );
-};
-
-const ProjectCard = ({ project }) => {
-  // Motion values for 3D effect
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const rotateX = useTransform(y, [-50, 50], [10, -10]);
-  const rotateY = useTransform(x, [-50, 50], [-10, 10]);
-
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const offsetX = e.clientX - rect.left - rect.width / 2;
-    const offsetY = e.clientY - rect.top - rect.height / 2;
-    x.set(offsetX / 5);
-    y.set(offsetY / 5);
-  };
+  const projects = [
+    {
+      title: "E-HEALTH CARE",
+      desc: "Analyzed and structured 30,000+ healthcare records to improve decision reliability. Focused on data consistency and error reduction.",
+      link: "#",
+      icon: "https://cdn-icons-png.flaticon.com/512/2966/2966327.png" // Healthcare icon
+    },
+    {
+      title: "Genni",
+      desc: "Designed structured conversational flows focused on logical reasoning and insight delivery.",
+      link: "https://github.com/hereisVaibhav/Genni",
+      icon: "https://cdn-icons-png.flaticon.com/512/2103/2103633.png" // AI/Bot icon
+    },
+    {
+      title: "Portfolio",
+      desc: "Modern personal website showing professional journey and skills.",
+      link: "https://github.com/hereisVaibhav/vaibhav-portfolio",
+      icon: "https://cdn-icons-png.flaticon.com/512/1006/1006771.png"
+    },
+    {
+      title: "Cancer Prediction",
+      desc: "A platform utilizing ML models to predict cancer based on medical parameters.",
+      link: "#",
+      icon: "https://cdn-icons-png.flaticon.com/512/2382/2382443.png" // Medical/Health icon
+    }
+  ];
 
   return (
-    <motion.div
-      className="project-card"
-      style={{ rotateX, rotateY, transformPerspective: 1000 }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={() => {
-        x.set(0);
-        y.set(0);
-      }}
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <h3>{project.title}</h3>
-      <p>{project.description}</p>
-    </motion.div>
+    <section className="projects" id="projects">
+      <h2 className="section-title">My Projects</h2>
+      <div className="gallery-container">
+        <OrbitGallery radius={280} items={projects.map((project, index) => (
+          <div className="project-card-square" key={index} onClick={() => window.open(project.link, "_blank")}>
+            <div className="icon-wrapper">
+              <img src={project.icon} alt={project.title} />
+            </div>
+            <h3>{project.title}</h3>
+            <p>{project.desc}</p>
+          </div>
+        ))} />
+      </div>
+    </section>
   );
 };
 

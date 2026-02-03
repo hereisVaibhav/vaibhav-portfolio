@@ -1,0 +1,48 @@
+@keyframes rectangle-orbit {
+    0% {
+        transform: translate(-50%, -50%) translate(0, var(--radius-neg));
+    }
+
+    12.5% {
+        transform: translate(-50%, -50%) translate(var(--radius), var(--radius-neg));
+    }
+
+    37.5% {
+        transform: translate(-50%, -50%) translate(var(--radius), var(--radius));
+    }
+
+    62.5% {
+        transform: translate(-50%, -50%) translate(var(--radius-neg), var(--radius));
+    }
+
+    87.5% {
+        transform: translate(-50%, -50%) translate(var(--radius-neg), var(--radius-neg));
+    }
+
+    100% {
+        transform: translate(-50%, -50%) translate(0, var(--radius-neg));
+    }
+}
+
+.orbit-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.orbit-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Animation will be applied in JSX with staggered delay */
+}
+
+.orbit-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+    width: max-content;
+    /* Ensure it doesn't compress the card */
+}
