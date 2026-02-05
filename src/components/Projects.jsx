@@ -6,25 +6,25 @@ const Projects = () => {
   const projects = [
     {
       title: "E-HEALTH CARE",
-      desc: "Analyzed and structured 30,000+ healthcare records to improve decision reliability. Focused on data consistency and error reduction.",
+      //  desc: "Analyzed and structured 30,000+ healthcare records to improve decision reliability. Focused on data consistency and error reduction.",
       link: "#",
       icon: "https://cdn-icons-png.flaticon.com/512/2966/2966327.png" // Healthcare icon
     },
     {
       title: "Genni",
-      desc: "Designed structured conversational flows focused on logical reasoning and insight delivery.",
+      //  desc: "Designed structured conversational flows focused on logical reasoning and insight delivery.",
       link: "https://github.com/hereisVaibhav/Genni",
       icon: "https://cdn-icons-png.flaticon.com/512/2103/2103633.png" // AI/Bot icon
     },
     {
       title: "Portfolio",
-      desc: "Modern personal website showing professional journey and skills.",
+      //  desc: "Modern personal website showing professional journey and skills.",
       link: "https://github.com/hereisVaibhav/vaibhav-portfolio",
       icon: "https://cdn-icons-png.flaticon.com/512/1006/1006771.png"
     },
     {
       title: "Cancer Prediction",
-      desc: "A platform utilizing ML models to predict cancer based on medical parameters.",
+      //  desc: "A platform utilizing ML models to predict cancer based on medical parameters.",
       link: "#",
       icon: "https://cdn-icons-png.flaticon.com/512/2382/2382443.png" // Medical/Health icon
     }

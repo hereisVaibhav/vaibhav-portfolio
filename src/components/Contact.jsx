@@ -20,7 +20,7 @@ const Contact = () => {
         <div className="social-links">
           <a href="https://www.linkedin.com/in/vaibhav-shingade-5bb329258/" target="_blank" rel="noopener noreferrer">
             <motion.img
-              src="/assets/linkedin.png"
+              src={`${import.meta.env.BASE_URL}assets/linkedin.png`}
               alt="LinkedIn"
               className="social-icon"
               animate={{ y: [0, -10, 0] }}
@@ -31,7 +31,7 @@ const Contact = () => {
 
           <a href="https://github.com/hereisVaibhav?tab=overview&from=2025-02-01&to=2025-02-28" target="_blank" rel="noopener noreferrer">
             <motion.img
-              src="/assets/github.png"
+              src={`${import.meta.env.BASE_URL}assets/github.png`}
               alt="GitHub"
               className="social-icon"
               animate={{ y: [-10, 0, -10] }}
