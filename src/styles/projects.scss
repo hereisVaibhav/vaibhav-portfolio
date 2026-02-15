@@ -26,35 +26,31 @@
   .project-card-square {
     width: 250px;
     height: 250px;
-    flex-shrink: 0; // Prevent shrinking
-    background: $glass-bg;
-    backdrop-filter: blur($backdrop-blur);
-    border: 1px solid $glass-border;
+    flex-shrink: 0;
+    @include glass-card;
     border-radius: 50%;
-    padding: 1.5rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     cursor: pointer;
-    box-shadow: $glass-shadow;
-    transition: all 0.3s ease;
     overflow: hidden;
 
     @media (max-width: 768px) {
-      width: 170px;
-      height: 170px;
-      padding: 0.8rem;
+      width: 180px;
+      height: 180px;
+      padding: 1rem;
     }
 
     &:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: $secondary-color;
-      box-shadow: 0 0 30px rgba($secondary-color, 0.3);
+      border-color: rgba($secondary-color, 0.4);
+      box-shadow: 0 0 40px rgba($secondary-color, 0.2);
 
       h3 {
         color: $secondary-color;
+        text-shadow: 0 0 10px rgba($secondary-color, 0.3);
       }
     }
 

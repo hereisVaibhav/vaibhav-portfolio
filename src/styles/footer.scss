@@ -2,28 +2,37 @@
 
 .footer {
     width: 100%;
-    padding: 2rem 0;
-    // Don't use absolute positioning or fixed height if not needed, let it flow
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(5px);
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 3rem 0;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur($backdrop-blur);
+    border-top: 1px solid $glass-border;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: auto; // Push to bottom if container allows
+    margin-top: auto;
+    position: relative;
+    z-index: 10;
 
     .footer-content {
         text-align: center;
         color: $text-muted;
 
         p {
-            font-size: 0.9rem;
-            margin: 0.2rem 0;
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+            letter-spacing: 1px;
+
+            span {
+                @include text-gradient;
+                font-weight: 800;
+            }
         }
 
         .footer-sub {
-            font-size: 0.8rem;
-            opacity: 0.7;
+            font-size: 0.85rem;
+            opacity: 0.5;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
     }
 }

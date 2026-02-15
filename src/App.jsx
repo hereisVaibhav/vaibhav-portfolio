@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Work from "./components/Work";
@@ -9,6 +10,13 @@ import ScrollSection from "./components/ScrollSection";
 import "./styles/_global.scss";
 
 function App() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   useEffect(() => {
     // Reset scroll on load
     window.history.scrollRestoration = "manual";
@@ -17,6 +25,7 @@ function App() {
 
   return (
     <>
+      <motion.div className="scroll-progress" style={{ scaleX }} />
       <Navbar />
 
       <main className="main-content">

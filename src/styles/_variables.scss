@@ -1,20 +1,20 @@
-// 🎨 Modern Light Color Palette
-$bg-color: #ffffff;
-$primary-color: #007bb8; // Slightly darker blue for contrast
-$secondary-color: #b529c9; // Slightly darker purple
-$accent-color: #00c875;
-$text-color: #1a1a1a;
-$text-muted: #555555;
+// 🎨 Modern Dark & Premium Color Palette
+$bg-color: #0a0a0a;
+$primary-color: #00A8E8; // Vibrant Blue for Dark Mode
+$secondary-color: #b529c9; // Vibrant Purple
+$accent-color: #00ffcc; // Neon Teal
+$text-color: #f5f5f5;
+$text-muted: #a0a0a0;
 
-// 🔮 Glassmorphism Variables (for Light Mode)
-$glass-bg: rgba(255, 255, 255, 0.7);
-$glass-border: rgba(0, 0, 0, 0.1);
-$glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-$backdrop-blur: 10px;
+// 🔮 Glassmorphism Variables (for Dark Mode)
+$glass-bg: rgba(255, 255, 255, 0.03);
+$glass-border: rgba(255, 255, 255, 0.08);
+$glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+$backdrop-blur: 12px;
 
 // 📏 Spacing & Radii
-$border-radius: 16px;
-$section-padding: 80px 0;
+$border-radius: 20px;
+$section-padding: 100px 0;
 
 // ✨ Mixins
 @mixin glass-card {
@@ -24,17 +24,18 @@ $section-padding: 80px 0;
     border: 1px solid $glass-border;
     border-radius: $border-radius;
     box-shadow: $glass-shadow;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
-        border-color: rgba($primary-color, 0.4);
-        box-shadow: 0 0 20px rgba($primary-color, 0.15);
-        transform: translateY(-5px);
+        border-color: rgba($primary-color, 0.3);
+        box-shadow: 0 0 30px rgba($primary-color, 0.15);
+        transform: translateY(-8px);
+        background: rgba(255, 255, 255, 0.05);
     }
 }
 
 @mixin text-gradient {
-    background: linear-gradient(90deg, $primary-color, $secondary-color);
+    background: linear-gradient(90deg, $primary-color, $secondary-color, $accent-color);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

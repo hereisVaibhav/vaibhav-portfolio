@@ -17,20 +17,20 @@ const ParticlesBackground = () => {
         },
         particles: {
           number: {
-            value: 50, // Number of particles
+            value: 60, // Number of particles
           },
           shape: {
             type: "circle",
           },
           opacity: {
-            value: 0.7,
+            value: 0.25, // Subtle but visible
           },
           size: {
-            value: { min: 1, max: 4 },
+            value: { min: 1, max: 3 },
           },
           move: {
             enable: true,
-            speed: 1, // Adjust speed of floating
+            speed: 1.2, // Adjust speed of floating
           },
         },
       }}

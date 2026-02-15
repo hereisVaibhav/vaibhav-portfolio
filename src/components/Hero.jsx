@@ -42,7 +42,7 @@ const Hero = () => {
         </motion.h1>
 
         <p className="hero-subtitle">
-          Full Stack Developer | AI Enthusiast | Innovator
+          Transforming complex challenges into elegant digital solutions through full-stack expertise and AI innovation.
         </p>
 
         <motion.button

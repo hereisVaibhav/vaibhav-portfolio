@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 import "../styles/contact.scss";
 
 const Contact = () => {
@@ -19,30 +20,30 @@ const Contact = () => {
         {/* Social Media Links */}
         <div className="social-links">
           <a href="https://www.linkedin.com/in/vaibhav-shingade-5bb329258/" target="_blank" rel="noopener noreferrer">
-            <motion.img
-              src={`${import.meta.env.BASE_URL}assets/linkedin.png`}
-              alt="LinkedIn"
+            <motion.div
               className="social-icon"
               animate={{ y: [0, -10, 0] }}
               transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
               whileHover={{ scale: 1.2 }}
-            />
+            >
+              <FaLinkedin />
+            </motion.div>
           </a>
 
           <a href="https://github.com/hereisVaibhav?tab=overview&from=2025-02-01&to=2025-02-28" target="_blank" rel="noopener noreferrer">
-            <motion.img
-              src={`${import.meta.env.BASE_URL}assets/github.png`}
-              alt="GitHub"
+            <motion.div
               className="social-icon"
               animate={{ y: [-10, 0, -10] }}
               transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
               whileHover={{ scale: 1.2 }}
-            />
+            >
+              <FaGithub />
+            </motion.div>
           </a>
         </div>
 
         <p className="contact-text">
-          Let's build something amazing together!
+          Available for strategic collaborations and innovative digital projects. Reach out via LinkedIn or GitHub to start a conversation.
         </p>
       </div>
     </section>

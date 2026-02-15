@@ -26,31 +26,31 @@
   .work-card-square {
     width: 250px;
     height: 250px;
-    flex-shrink: 0; // Prevent shrinking
-    background: $glass-bg;
-    backdrop-filter: blur($backdrop-blur);
-    border: 1px solid $glass-border;
+    flex-shrink: 0;
+    @include glass-card;
     border-radius: 50%;
-    padding: 1.5rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     cursor: pointer;
-    box-shadow: $glass-shadow;
-    transition: all 0.3s ease;
     overflow: hidden;
 
     @media (max-width: 768px) {
-      width: 170px;
-      height: 170px;
-      padding: 0.8rem;
+      width: 180px;
+      height: 180px;
+      padding: 1rem;
     }
 
     &:hover {
-      box-shadow: 0 0 25px rgba($primary-color, 0.4);
-      border-color: rgba($primary-color, 0.5);
+      border-color: rgba($accent-color, 0.4);
+      box-shadow: 0 0 40px rgba($accent-color, 0.2);
+
+      .icon-wrapper img {
+        filter: drop-shadow(0 0 10px $accent-color);
+      }
     }
 
     .icon-wrapper {

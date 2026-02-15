@@ -22,26 +22,38 @@
   }
 
   .phone-dial {
-    font-size: 4rem;
-    filter: drop-shadow(0 0 10px rgba($primary-color, 0.5));
+    font-size: 5rem;
+    filter: drop-shadow(0 0 20px rgba($primary-color, 0.4));
+    @include text-gradient;
+    margin-bottom: 1.5rem;
   }
 
   .social-links {
     display: flex;
-    gap: 2rem;
+    gap: 3rem;
 
     .social-icon {
-      width: 50px;
-      height: 50px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.1));
+      font-size: 3.5rem;
+      color: $text-muted;
       cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        color: $primary-color;
+        filter: drop-shadow(0 0 15px rgba($primary-color, 0.6));
+        transform: translateY(-5px) scale(1.1);
+      }
     }
   }
 
   .contact-text {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: $text-muted;
-    max-width: 600px;
+    max-width: 700px;
+    line-height: 1.6;
+    margin-top: 2rem;
   }
 }
