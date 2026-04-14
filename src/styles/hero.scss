@@ -1,34 +1,95 @@
 @import "variables";
 
+/* ── Glitch keyframes ─────────────────────────────── */
+@keyframes glitch-anim-1 {
+  0%   { clip-path: inset(20% 0 60% 0); transform: translate(-3px, 2px); }
+  20%  { clip-path: inset(10% 0 70% 0); transform: translate(3px, -1px); }
+  40%  { clip-path: inset(50% 0 20% 0); transform: translate(-2px, 1px); }
+  60%  { clip-path: inset(30% 0 40% 0); transform: translate(2px, -2px); }
+  80%  { clip-path: inset(70% 0 10% 0); transform: translate(-1px, 2px); }
+  100% { clip-path: inset(20% 0 60% 0); transform: translate(3px, -1px); }
+}
+@keyframes glitch-anim-2 {
+  0%   { clip-path: inset(60% 0 10% 0); transform: translate(3px, -2px); }
+  20%  { clip-path: inset(40% 0 30% 0); transform: translate(-3px, 1px); }
+  40%  { clip-path: inset(20% 0 50% 0); transform: translate(2px, -1px); }
+  60%  { clip-path: inset(70% 0 5% 0);  transform: translate(-2px, 2px); }
+  80%  { clip-path: inset(10% 0 60% 0); transform: translate(1px, -2px); }
+  100% { clip-path: inset(60% 0 10% 0); transform: translate(3px, -2px); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+@keyframes scanline {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
 .hero {
-  // Inherits global strict centering:
-  // display: flex; center; center;
+  overflow: hidden;
+
+  /* ── Scanlines overlay ─────────────────────────── */
+  .hero-scanlines {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 255, 204, 0.015) 0px,
+      rgba(0, 255, 204, 0.015) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+    pointer-events: none;
+    z-index: 5;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 200%;
+      background: linear-gradient(
+        transparent 0%,
+        rgba(0, 255, 204, 0.03) 50%,
+        transparent 100%
+      );
+      animation: scanline 8s linear infinite;
+    }
+  }
 
   .hero-background-layer {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     z-index: 0;
     overflow: hidden;
   }
 
   .hero-box {
     position: relative;
-    z-index: 10; // Above background
+    z-index: 10;
     display: flex;
     flex-direction: column;
-    align-items: center; // Horizontally center text/button
-    gap: 1.5rem;
+    align-items: center;
+    gap: 1.2rem;
   }
 
+  /* ── Greeting ──────────────────────────────────── */
+  .hero-greeting {
+    font-size: 1.3rem;
+    color: $text-muted;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* ── Glitch Title ──────────────────────────────── */
   .hero-title {
     font-size: 5rem;
     font-weight: 900;
     line-height: 1.1;
     letter-spacing: -2px;
     color: $text-color;
+    position: relative;
+    display: inline-block;
 
     span {
       @include text-gradient;
@@ -36,22 +97,89 @@
     }
 
     @media (max-width: 768px) {
-      font-size: 3.2rem;
+      font-size: 3rem;
     }
   }
 
+  /* Glitch pseudo‑layers — activated on hover */
+  .glitch {
+    &::before,
+    &::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      font-size: inherit; font-weight: inherit;
+      letter-spacing: inherit; line-height: inherit;
+      @include text-gradient;
+      opacity: 0;
+      pointer-events: none;
+    }
+    &::before {
+      text-shadow: 2px 0 #00ffcc;
+    }
+    &::after {
+      text-shadow: -2px 0 #b529c9;
+    }
+    &:hover {
+      &::before {
+        opacity: 0.8;
+        animation: glitch-anim-1 0.4s linear infinite;
+      }
+      &::after {
+        opacity: 0.8;
+        animation: glitch-anim-2 0.4s linear infinite;
+      }
+    }
+  }
+
+  /* ── Scramble role text ────────────────────────── */
+  .hero-role {
+    display: flex;
+    align-items: center;
+    font-family: 'Courier New', monospace;
+    font-size: 1.4rem;
+    color: $accent-color;
+    min-height: 2rem;
+    margin: 0.5rem 0;
+    text-shadow: 0 0 10px rgba($accent-color, 0.4);
+
+    .role-prefix {
+      color: $primary-color;
+      font-weight: 700;
+      margin-right: 0.4rem;
+    }
+    .role-text {
+      letter-spacing: 1px;
+    }
+    .role-cursor {
+      margin-left: 2px;
+      animation: blink 0.8s step-end infinite;
+      color: $accent-color;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+  }
+
+  /* ── Subtitle ──────────────────────────────────── */
   .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: $text-muted;
     font-weight: 400;
     letter-spacing: 1px;
+    max-width: 650px;
+    line-height: 1.6;
 
     @media (max-width: 768px) {
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
   }
 
+  /* ── CTA Button ────────────────────────────────── */
   .btn-primary {
+    position: relative;
     padding: 1.2rem 3rem;
     font-size: 1.1rem;
     color: #fff;
@@ -64,11 +192,36 @@
     letter-spacing: 2px;
     box-shadow: 0 10px 30px rgba($primary-color, 0.3);
     transition: all 0.4s ease;
+    overflow: hidden;
+
+    .btn-text {
+      position: relative;
+      z-index: 1;
+    }
+    .btn-glow {
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      background: linear-gradient(90deg, $primary-color, $secondary-color, $accent-color, $primary-color);
+      background-size: 300% 100%;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      filter: blur(8px);
+      z-index: 0;
+    }
 
     &:hover {
       transform: translateY(-3px) scale(1.05);
       box-shadow: 0 15px 40px rgba($primary-color, 0.5);
-      filter: brightness(1.2);
+      .btn-glow {
+        opacity: 1;
+        animation: glow-shift 2s linear infinite;
+      }
     }
   }
+}
+
+@keyframes glow-shift {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
 }

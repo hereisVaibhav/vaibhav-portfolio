@@ -10,7 +10,7 @@
   align-items: center;
   height: var(--navbar-height);
   padding: 0 5%;
-  background: rgba(10, 10, 10, 0.6); // Dark semi-transparent
+  background: rgba(10, 10, 10, 0.6);
   backdrop-filter: blur($backdrop-blur);
   -webkit-backdrop-filter: blur($backdrop-blur);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -19,8 +19,18 @@
   top: 0;
   left: 0;
   z-index: 1000;
-  transition: all 0.4s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
+  /* ── Scrolled state ──────────────────────────── */
+  &.navbar--scrolled {
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    border-bottom-color: rgba($primary-color, 0.1);
+  }
+
+  /* ── Logo ─────────────────────────────────────── */
   .logo {
     font-size: 2rem;
     font-weight: 800;
@@ -34,6 +44,7 @@
     }
   }
 
+  /* ── Mobile menu icon ────────────────────────── */
   .menu-icon {
     font-size: 2rem;
     cursor: pointer;
@@ -41,12 +52,15 @@
     color: $text-color;
   }
 
+  /* ── Nav links ───────────────────────────────── */
   .nav-links {
     display: flex;
     list-style: none;
     gap: 3rem;
 
     li {
+      position: relative;
+
       a {
         text-decoration: none;
         color: $text-muted;
@@ -54,33 +68,41 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 1px;
-        transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
-
-        &::after {
-          content: '';
-          position: absolute;
-          width: 0;
-          height: 2px;
-          bottom: -5px;
-          left: 0;
-          background: linear-gradient(90deg, $primary-color, $accent-color);
-          transition: width 0.3s;
-          box-shadow: 0 0 10px rgba($primary-color, 0.8);
-        }
+        display: inline-block;
 
         &:hover {
           color: $text-color;
           text-shadow: 0 0 15px rgba($primary-color, 0.6);
-
-          &::after {
-            width: 100%;
-          }
         }
       }
     }
   }
 
+  /* ── Active section indicator ────────────────── */
+  .active-indicator {
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, $primary-color, $accent-color);
+    border-radius: 1px;
+    box-shadow: 0 0 12px rgba($primary-color, 0.8), 0 0 4px rgba($accent-color, 0.6);
+  }
+
+  /* ── Bottom glow bar on scroll ───────────────── */
+  .navbar-glow {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba($primary-color, 0.4), rgba($accent-color, 0.4), transparent);
+  }
+
+  /* ── Mobile responsive ───────────────────────── */
   @media (max-width: 768px) {
     background: rgba(10, 10, 10, 0.95);
 

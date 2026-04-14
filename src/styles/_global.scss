@@ -19,8 +19,9 @@ body {
     overflow-x: hidden;
     background-color: $bg-color;
     color: $text-color;
-    font-family: "Poppins", sans-serif;
+    font-family: "Inter", "Poppins", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     transition: background-color 0.5s ease;
 }
 
@@ -32,7 +33,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
+    height: 3px;
     background: linear-gradient(90deg, $primary-color, $secondary-color, $accent-color);
     transform-origin: 0%;
     z-index: 9999;
@@ -43,17 +44,17 @@ body {
    SCROLLBAR (Dark Mode)
 ----------------------------------------------------------- */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #111;
+    background: #0a0a0a;
 }
 
 ::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, rgba($primary-color, 0.3), rgba($secondary-color, 0.3));
     border-radius: 10px;
-    border: 2px solid #111;
+    border: 2px solid #0a0a0a;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -61,7 +62,7 @@ body {
 }
 
 /* -----------------------------------------------------------
-   LAYOUT ENGINE (Strict Centering)
+   LAYOUT ENGINE
 ----------------------------------------------------------- */
 #root {
     width: 100%;
@@ -73,7 +74,6 @@ body {
 .main-content {
     width: 100%;
     max-width: 1600px;
-    /* Prevent being too wide on 4k screens */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -83,7 +83,6 @@ body {
    ALL SECTIONS:
    - Full Viewport Height
    - Absolute Center Content
-   - No weird margins
 */
 section {
     width: 100%;
@@ -91,9 +90,7 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* Vertical Center */
     align-items: center;
-    /* Horizontal Center */
     text-align: center;
     position: relative;
     padding: 0 20px;
@@ -105,4 +102,12 @@ section {
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+/* -----------------------------------------------------------
+   SELECTION HIGHLIGHT
+----------------------------------------------------------- */
+::selection {
+    background: rgba($primary-color, 0.3);
+    color: $text-color;
 }

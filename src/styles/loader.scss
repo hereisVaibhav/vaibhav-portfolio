@@ -1,0 +1,90 @@
+@import "variables";
+
+@keyframes glitch-loader-1 {
+  0%   { clip-path: inset(30% 0 50% 0); transform: translate(-4px, 0); }
+  25%  { clip-path: inset(10% 0 70% 0); transform: translate(4px, 0); }
+  50%  { clip-path: inset(60% 0 20% 0); transform: translate(-3px, 0); }
+  75%  { clip-path: inset(40% 0 30% 0); transform: translate(3px, 0); }
+  100% { clip-path: inset(30% 0 50% 0); transform: translate(-4px, 0); }
+}
+@keyframes glitch-loader-2 {
+  0%   { clip-path: inset(50% 0 20% 0); transform: translate(4px, 0); }
+  25%  { clip-path: inset(70% 0 5% 0);  transform: translate(-3px, 0); }
+  50%  { clip-path: inset(15% 0 60% 0); transform: translate(3px, 0); }
+  75%  { clip-path: inset(55% 0 15% 0); transform: translate(-4px, 0); }
+  100% { clip-path: inset(50% 0 20% 0); transform: translate(4px, 0); }
+}
+
+.loader-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: $bg-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.loader-text {
+  font-size: 5rem;
+  font-weight: 900;
+  letter-spacing: 12px;
+  display: flex;
+  position: relative;
+  @include text-gradient;
+
+  @media (max-width: 768px) {
+    font-size: 3rem;
+    letter-spacing: 6px;
+  }
+}
+
+.loader-char {
+  display: inline-block;
+}
+
+/* Glitch pseudo-layers for loader */
+.glitch-loader {
+  &::before,
+  &::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    @include text-gradient;
+  }
+  &::before {
+    text-shadow: 3px 0 $accent-color;
+    animation: glitch-loader-1 0.5s linear infinite;
+    opacity: 0.5;
+  }
+  &::after {
+    text-shadow: -3px 0 $secondary-color;
+    animation: glitch-loader-2 0.5s linear infinite;
+    opacity: 0.5;
+  }
+}
+
+.loader-bar {
+  width: 200px;
+  height: 2px;
+  background: linear-gradient(90deg, $primary-color, $accent-color);
+  transform-origin: left;
+  border-radius: 1px;
+  box-shadow: 0 0 10px rgba($accent-color, 0.4);
+}
+
+.loader-tagline {
+  font-size: 0.95rem;
+  color: $text-muted;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+}

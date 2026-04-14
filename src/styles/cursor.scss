@@ -1,0 +1,71 @@
+/* ── Custom Cursor ────────────────────────────────── */
+
+/* Hide default cursor globally */
+*,
+*::before,
+*::after {
+  cursor: none !important;
+}
+
+/* Inner dot */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00ffcc;
+  box-shadow:
+    0 0 6px #00ffcc,
+    0 0 15px rgba(0, 255, 204, 0.5),
+    0 0 30px rgba(0, 255, 204, 0.2);
+  pointer-events: none;
+  z-index: 99999;
+  mix-blend-mode: difference;
+  transition: width 0.25s ease, height 0.25s ease, background 0.25s ease;
+
+  &.cursor-hover {
+    width: 14px;
+    height: 14px;
+    background: #00A8E8;
+    box-shadow:
+      0 0 10px #00A8E8,
+      0 0 25px rgba(0, 168, 232, 0.6);
+  }
+}
+
+/* Outer ring */
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 255, 204, 0.4);
+  pointer-events: none;
+  z-index: 99998;
+  transition: width 0.35s ease, height 0.35s ease, border-color 0.35s ease,
+    background 0.35s ease;
+
+  &.cursor-hover {
+    width: 60px;
+    height: 60px;
+    border-color: rgba(0, 168, 232, 0.6);
+    background: rgba(0, 168, 232, 0.08);
+  }
+}
+
+/* Hide on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    cursor: auto !important;
+  }
+}

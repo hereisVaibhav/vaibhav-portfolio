@@ -1,48 +1,79 @@
 import React from "react";
-import OrbitGallery from "./CircularGallery";
+import { motion } from "framer-motion";
+import { FaReact, FaNodeJs, FaPython, FaDatabase, FaMobileAlt, FaBrain } from "react-icons/fa";
 import "../styles/projects.scss";
 
-const Projects = () => {
-  const projects = [
-    {
-      title: "E-HEALTH CARE",
-      //  desc: "Analyzed and structured 30,000+ healthcare records to improve decision reliability. Focused on data consistency and error reduction.",
-      link: "#",
-      icon: "https://cdn-icons-png.flaticon.com/512/2966/2966327.png" // Healthcare icon
-    },
-    {
-      title: "Genni",
-      //  desc: "Designed structured conversational flows focused on logical reasoning and insight delivery.",
-      link: "https://github.com/hereisVaibhav/Genni",
-      icon: "https://cdn-icons-png.flaticon.com/512/2103/2103633.png" // AI/Bot icon
-    },
-    {
-      title: "Portfolio",
-      //  desc: "Modern personal website showing professional journey and skills.",
-      link: "https://github.com/hereisVaibhav/vaibhav-portfolio",
-      icon: "https://cdn-icons-png.flaticon.com/512/1006/1006771.png"
-    },
-    {
-      title: "Cancer Prediction",
-      //  desc: "A platform utilizing ML models to predict cancer based on medical parameters.",
-      link: "#",
-      icon: "https://cdn-icons-png.flaticon.com/512/2382/2382443.png" // Medical/Health icon
-    }
-  ];
+const projects = [
+  {
+    title: "NEXUS WELLNESS",
+    desc: "Nexus Wellness empowers healthier living through innovative, science-driven solutions.",
+    link: "https://nexus-vt1c.onrender.com/",
+    icon: "https://cdn-icons-png.flaticon.com/512/2966/2966327.png",
+    stack: [<FaBrain />, <FaNodeJs />, <FaDatabase />],
+    size: "large"
+  },
+  {
+    title: "Genni AI",
+    desc: "Advanced LLM-powered assistant designed for structured logical reasoning and automated research synthesis.",
+    link: "https://github.com/hereisVaibhav/Genni",
+    icon: "https://cdn-icons-png.flaticon.com/512/2103/2103633.png",
+    stack: [<FaBrain />, <FaPython />, <FaReact />],
+    size: "tall"
+  },
+  {
+    title: "Cancer Predictor",
+    desc: "Deep learning model utilizing convolutional neural networks for early-stage tumor detection with 98% accuracy.",
+    link: "#",
+    icon: "https://cdn-icons-png.flaticon.com/512/2382/2382443.png",
+    stack: [<FaBrain />, <FaPython />],
+    size: "wide"
+  }
+];
 
+const Projects = () => {
   return (
     <section className="projects" id="projects">
-      <h2 className="section-title">My Projects</h2>
-      <div className="gallery-container">
-        <OrbitGallery radius={280} items={projects.map((project, index) => (
-          <div className="project-card-square" key={index} onClick={() => window.open(project.link, "_blank")}>
-            <div className="icon-wrapper">
-              <img src={project.icon} alt={project.title} />
+      <motion.h2
+        className="section-title"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
+        Modular Holo-Grid
+      </motion.h2>
+
+      <div className="projects-grid">
+        {projects.map((project, index) => (
+          <motion.div
+            key={index}
+            className={`project-card-holo ${project.size}`}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            onClick={() => window.open(project.link, "_blank")}
+          >
+            {/* HUD Background Decorations */}
+            <div className="hud-bg">
+              <div className="grid-pattern" />
+              <div className="hud-circles" />
             </div>
-            <h3>{project.title}</h3>
-            <p>{project.desc}</p>
-          </div>
-        ))} />
+
+            {/* Scanning Line Animation */}
+            <div className="scan-line" />
+
+            <div className="card-content">
+              <h3>{project.title}</h3>
+              <p>{project.desc}</p>
+
+              <div className="tech-stack">
+                {project.stack.map((Icon, i) => (
+                  <div key={i} className="tech-icon">{Icon}</div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
