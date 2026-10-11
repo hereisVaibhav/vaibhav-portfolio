@@ -21,9 +21,9 @@ const Counter = ({ value, duration = 2 }) => {
 const WorkStats = () => {
   const stats = [
     { label: "Years Experience", value: 3, suffix: "+" },
-    { label: "Completed Projects", value: 15, suffix: "+" },
-    { label: "Technologies Mastered", value: 12, suffix: "+" },
-    { label: "Research Papers", value: 1, suffix: "" },
+    { label: "Completed Projects", value: 20, suffix: "+" },
+    { label: "Technologies Mastered", value: 15, suffix: "+" },
+    { label: "Research Papers", value: 2, suffix: "" },
   ];
 
   return (

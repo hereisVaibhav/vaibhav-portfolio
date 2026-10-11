@@ -12,6 +12,8 @@ const skillRings = [
       { name: "React", icon: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" },
       { name: "JavaScript", icon: "https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg" },
       { name: "HTML/CSS", icon: "https://cdn-icons-png.flaticon.com/512/732/732212.png" },
+      { name: "Framer Motion", icon: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg" },
+      { name: "React Icons", icon: "https://cdn-icons-png.flaticon.com/512/1126/1126012.png" },
     ],
   },
   {

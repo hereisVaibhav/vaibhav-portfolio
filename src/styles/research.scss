@@ -1,0 +1,366 @@
+@import "variables";
+
+.research-section {
+  padding: 6rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  .section-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    text-align: center;
+    background: linear-gradient(135deg, #00a8e8 0%, #b529c9 60%, #00ffc3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  .research-subtitle {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 1rem;
+    margin-bottom: 3.5rem;
+    letter-spacing: 0.02em;
+  }
+
+  .research-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .research-card {
+    position: relative;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 168, 232, 0.06) 0%,
+      rgba(181, 41, 201, 0.05) 50%,
+      rgba(0, 255, 195, 0.04) 100%
+    );
+    border: 1px solid rgba(0, 168, 232, 0.25);
+    border-radius: 20px;
+    padding: 2.5rem;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    cursor: default;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      border-color: rgba(0, 168, 232, 0.55);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0, 168, 232, 0.15), 0 0 40px rgba(181, 41, 201, 0.08);
+
+      .card-glow {
+        opacity: 1;
+      }
+
+      .scan-line {
+        animation: scan 2s linear infinite;
+      }
+    }
+
+    .card-glow {
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(0, 168, 232, 0.18) 0%, transparent 70%);
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .scan-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(0, 168, 232, 0.6), transparent);
+      animation: none;
+      pointer-events: none;
+    }
+
+    @keyframes scan {
+      0% { top: 0; opacity: 1; }
+      95% { opacity: 0.4; }
+      100% { top: 100%; opacity: 0; }
+    }
+  }
+
+  /* In-review card variant */
+  .research-card.in-review {
+    background: linear-gradient(
+      135deg,
+      rgba(251, 191, 36, 0.05) 0%,
+      rgba(181, 41, 201, 0.04) 50%,
+      rgba(251, 191, 36, 0.03) 100%
+    );
+    border-color: rgba(251, 191, 36, 0.2);
+
+    &:hover {
+      border-color: rgba(251, 191, 36, 0.5);
+      box-shadow: 0 20px 60px rgba(251, 191, 36, 0.1), 0 0 40px rgba(181, 41, 201, 0.06);
+
+      .card-glow {
+        background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, transparent 70%);
+        opacity: 1;
+      }
+
+      .scan-line {
+        background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.55), transparent);
+        animation: scan 2s linear infinite;
+      }
+    }
+
+    .paper-abstract {
+      border-left-color: rgba(251, 191, 36, 0.3);
+    }
+  }
+
+  /* Meta row */
+  .paper-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .journal-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(0, 168, 232, 0.12);
+    border: 1px solid rgba(0, 168, 232, 0.3);
+    color: #00a8e8;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+
+    .badge-icon {
+      font-size: 0.65rem;
+    }
+  }
+
+  .sjif-badge {
+    background: rgba(181, 41, 201, 0.12);
+    border: 1px solid rgba(181, 41, 201, 0.3);
+    color: #c96de4;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    border-radius: 100px;
+  }
+
+  /* Under-review badge */
+  .review-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.35);
+    color: #fbbf24;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+
+    .spin-icon {
+      font-size: 0.65rem;
+      animation: spin 2s linear infinite;
+    }
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  /* Title */
+  .paper-title {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.45;
+    margin-bottom: 0.6rem;
+  }
+
+  /* Byline */
+  .paper-byline {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+
+    .paper-author {
+      color: #00ffc3;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .paper-dot {
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    .paper-date {
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 0.82rem;
+    }
+  }
+
+  /* Abstract */
+  .paper-abstract {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    line-height: 1.75;
+    margin-bottom: 1.4rem;
+    border-left: 2px solid rgba(0, 168, 232, 0.35);
+    padding-left: 1rem;
+  }
+
+  /* Keywords */
+  .paper-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+
+    .kw-icon {
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 0.7rem;
+    }
+
+    .keyword-chip {
+      background: rgba(0, 255, 195, 0.07);
+      border: 1px solid rgba(0, 255, 195, 0.2);
+      color: rgba(0, 255, 195, 0.8);
+      font-size: 0.72rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 100px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: background 0.2s ease;
+
+      &:hover {
+        background: rgba(0, 255, 195, 0.14);
+      }
+    }
+  }
+
+  /* DOI / ISSN */
+  .paper-ids {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+
+    .paper-id-item {
+      color: rgba(255, 255, 255, 0.35);
+      font-size: 0.78rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+
+      .id-icon {
+        color: rgba(0, 168, 232, 0.5);
+        font-size: 0.7rem;
+      }
+
+      code {
+        font-family: "JetBrains Mono", "Fira Code", monospace;
+        color: rgba(0, 168, 232, 0.75);
+        font-size: 0.76rem;
+        background: rgba(0, 168, 232, 0.07);
+        padding: 0.1rem 0.35rem;
+        border-radius: 4px;
+      }
+    }
+  }
+
+  /* CTA Button */
+  .read-paper-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    background: linear-gradient(135deg, rgba(0, 168, 232, 0.15), rgba(181, 41, 201, 0.12));
+    border: 1px solid rgba(0, 168, 232, 0.45);
+    color: #00a8e8;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.65rem 1.4rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0, 168, 232, 0.25), rgba(181, 41, 201, 0.2));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    &:hover {
+      border-color: rgba(0, 168, 232, 0.8);
+      color: #fff;
+      box-shadow: 0 0 20px rgba(0, 168, 232, 0.35);
+      transform: translateY(-2px);
+
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    .btn-icon {
+      font-size: 0.72rem;
+      position: relative;
+    }
+  }
+  /* Coming-soon CTA (in-review) */
+  .coming-soon-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    background: rgba(251, 191, 36, 0.07);
+    border: 1px dashed rgba(251, 191, 36, 0.35);
+    color: rgba(251, 191, 36, 0.75);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 0.6rem 1.3rem;
+    border-radius: 50px;
+    cursor: default;
+
+    .spin-icon {
+      font-size: 0.75rem;
+      animation: spin 2s linear infinite;
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .research-section {
+    padding: 4rem 1.25rem;
+
+    .research-card {
+      padding: 1.75rem;
+    }
+  }
+}

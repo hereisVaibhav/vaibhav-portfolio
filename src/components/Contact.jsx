@@ -5,7 +5,7 @@ import "../styles/contact.scss";
 
 const Contact = () => {
   const [copied, setCopied] = useState(false);
-  const email = "vaibhavshingade.work@gmail.com";
+  const email = "vaibhavshingade03@gmail.com";
 
   const copyEmail = () => {
     navigator.clipboard.writeText(email);

@@ -27,6 +27,14 @@ const projects = [
     icon: "https://cdn-icons-png.flaticon.com/512/2382/2382443.png",
     stack: [<FaBrain />, <FaPython />],
     size: "wide"
+  },
+  {
+    title: "Plaxsia",
+    desc: "A modern web platform delivering seamless digital experiences with cutting-edge design and performance.",
+    link: "https://plaxsia.com",
+    icon: "https://cdn-icons-png.flaticon.com/512/1006/1006363.png",
+    stack: [<FaReact />, <FaNodeJs />, <FaMobileAlt />],
+    size: "large"
   }
 ];
 
