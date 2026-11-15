@@ -8,7 +8,7 @@ export default defineConfig({
     host: "localhost",
     port: 5173, // Use a different port if needed
   },
-  base: "/vaibhav-portfolio",
+  base: "./",
 })
 
 

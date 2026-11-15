@@ -72,7 +72,7 @@ const getBottyGeo = () => {
   for (let i = 0; i < pos.count; i++) {
     vec.fromBufferAttribute(pos, i);
     let az = Math.atan2(vec.z, vec.x);
-    let el = Math.acos(vec.y);
+    let el = Math.acos(Math.max(-1, Math.min(1, vec.y)));
 
     // Make Squircle base
     let l4 = Math.pow(
@@ -130,14 +130,20 @@ const RobotFace = () => {
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
     camera.position.z = 5.2;
 
-    const renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      alpha: true,
-      powerPreference: "high-performance",
-    });
-    renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    mount.appendChild(renderer.domElement);
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true,
+        powerPreference: "high-performance",
+      });
+      renderer.setSize(width, height);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      mount.appendChild(renderer.domElement);
+    } catch (err) {
+      console.warn("WebGL not available:", err);
+      return;
+    }
 
     // 2. Lights
     const ambientLight = new THREE.AmbientLight(0xffffff, 1.4);
