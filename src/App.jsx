@@ -12,6 +12,7 @@ import ScrollSection from "./components/ScrollSection";
 import CustomCursor from "./components/CustomCursor";
 import Loader from "./components/Loader";
 import ParticlesBackground from "./components/ParticlesBackground";
+import RobotFace from "./components/RobotFace";
 import "./styles/_global.scss";
 
 function App() {
@@ -46,6 +47,9 @@ function App() {
 
       {/* Scroll progress bar */}
       <motion.div className="scroll-progress" style={{ scaleX }} />
+
+      {/* Flying 3D AI Agent Companion */}
+      <RobotFace />
 
       {/* Navbar */}
       <Navbar />

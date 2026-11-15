@@ -64,7 +64,9 @@ const Projects = () => {
             {/* HUD Background Decorations */}
             <div className="hud-bg">
               <div className="grid-pattern" />
+              <div className="holo-stripe" />
               <div className="hud-circles" />
+              <div className="data-chip">SYS.{project.title.replace(/\s+/g, '_').toUpperCase()}</div>
             </div>
 
             {/* Scanning Line Animation */}

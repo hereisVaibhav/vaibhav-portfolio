@@ -13,8 +13,8 @@ const roles = [
 const Hero = () => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const rotateX = useTransform(y, [-100, 100], [10, -10]);
-  const rotateY = useTransform(x, [-100, 100], [-10, 10]);
+  const rotateX = useTransform(y, [-100, 100], [6, -6]);
+  const rotateY = useTransform(x, [-100, 100], [-6, 6]);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -36,65 +36,86 @@ const Hero = () => {
       {/* Scan‑line overlay for CRT feel */}
       <div className="hero-scanlines" />
 
-      {/* Main Content */}
-      <motion.div
-        className="hero-box"
-        style={{ rotateX, rotateY, transformPerspective: 1000 }}
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        {/* Greeting */}
-        <motion.p
-          className="hero-greeting"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
+      {/* Centered Hero Content */}
+      <div className="hero-content-wrapper">
+        <motion.div
+          className="hero-box"
+          style={{ rotateX, rotateY, transformPerspective: 1000 }}
+          initial={{ opacity: 0, scale: 0.95, y: 30 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          Hello, I'm
-        </motion.p>
+          {/* Greeting Badge */}
+          <motion.div
+            className="hero-greeting-badge"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
+            <span className="greeting-dot" />
+            <span className="greeting-text">Hello, I'm</span>
+          </motion.div>
 
-        {/* Name with glitch effect */}
-        <motion.h1
-          className="hero-title glitch"
-          data-text="Vaibhav Shingade"
-          animate={{ y: [-5, 5, -5] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <span>Vaibhav Shingade</span>
-        </motion.h1>
+          {/* Name with glitch effect */}
+          <motion.h1
+            className="hero-title glitch"
+            data-text="Vaibhav Shingade"
+            animate={{ y: [-4, 4, -4] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <span>Vaibhav Shingade</span>
+          </motion.h1>
 
-        {/* Scramble role text */}
-        <div className="hero-role">
-          <span className="role-prefix">{">"} </span>
-          <TextScramble
-            phrases={roles}
-            className="role-text"
-            speed={40}
-            pause={2800}
-          />
-          <span className="role-cursor">|</span>
-        </div>
+          {/* Scramble role text */}
+          <div className="hero-role">
+            <span className="role-prefix">{">"} </span>
+            <TextScramble
+              phrases={roles}
+              className="role-text"
+              speed={40}
+              pause={2800}
+            />
+            <span className="role-cursor">|</span>
+          </div>
 
-        <p className="hero-subtitle">
-          Transforming complex challenges into elegant digital solutions through
-          full-stack expertise and AI innovation.
-        </p>
+          <p className="hero-subtitle">
+            Transforming complex challenges into elegant digital solutions through
+            full-stack expertise and AI innovation.
+          </p>
 
-        <motion.button
-          className="btn-primary"
-          whileHover={{ scale: 1.05, boxShadow: "0 0 30px #00A8E8" }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() =>
-            document
-              .getElementById("work")
-              .scrollIntoView({ behavior: "smooth" })
-          }
-        >
-          <span className="btn-text">Explore Work</span>
-          <span className="btn-glow" />
-        </motion.button>
-      </motion.div>
+          <div className="hero-actions">
+            <motion.button
+              className="btn-primary"
+              whileHover={{ scale: 1.05, boxShadow: "0 0 30px #00A8E8" }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() =>
+                document
+                  .getElementById("work")
+                  .scrollIntoView({ behavior: "smooth" })
+              }
+            >
+              <span className="btn-text">Explore Work</span>
+              <span className="btn-glow" />
+            </motion.button>
+
+            <motion.button
+              className="btn-secondary"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() =>
+                document
+                  .getElementById("contact")
+                  .scrollIntoView({ behavior: "smooth" })
+              }
+            >
+              <span>Get In Touch</span>
+            </motion.button>
+          </div>
+        </motion.div>
+
+        {/* AI Mascot Anchor */}
+        <div className="hero-robot-spacer" id="hero-robot-anchor" />
+      </div>
     </section>
   );
 };
@@ -105,25 +126,25 @@ const FloatingIcons = () => {
     {
       src: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
       top: "15%",
-      left: "15%",
+      left: "8%",
       delay: 0,
     },
     {
       src: "https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg",
-      top: "25%",
-      right: "20%",
+      top: "20%",
+      right: "8%",
       delay: 2,
     },
     {
       src: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg",
       bottom: "20%",
-      left: "25%",
+      left: "10%",
       delay: 1,
     },
     {
       src: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg",
-      bottom: "25%",
-      right: "15%",
+      bottom: "22%",
+      right: "10%",
       delay: 3,
     },
   ];
@@ -141,7 +162,7 @@ const FloatingIcons = () => {
             right: icon.right,
             bottom: icon.bottom,
             width: "50px",
-            opacity: 0.3,
+            opacity: 0.15,
             pointerEvents: "none",
           }}
           animate={{ y: [-20, 20, -20], rotate: [0, 360] }}

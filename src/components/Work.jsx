@@ -5,10 +5,18 @@ import { link } from "framer-motion/client";
 
 const experiences = [
   {
+    title: "Freelancer",
+    company: "Self-Employed",
+    date: "2026 - Current",
+    current: true,
+    desc: "Building full-stack web applications, UI/UX designs, and AI-integrated solutions for clients worldwide. Specializing in React, Node.js, and modern web technologies.",
+    tags: ["Full Stack Dev", "React / Next.js", "UI/UX Design", "Node.js", "AI Integration", "Freelance"]
+  },
+  {
     title: "Data Science & Buisness Analyst Intern",
     company: "InternsElite",
-    date: "2026 - Present",
-    desc: "Working with Machine Learning models, including Supervised Learning and Unsupervised Learning & Conducting exploratory data analysis (EDA).",
+    date: "2026 - 2026",
+    desc: "Worked with Machine Learning models, including Supervised Learning and Unsupervised Learning & Conducted exploratory data analysis (EDA).",
     tags: ["Data Science & Analysis", "Buisness Strategy", "AI/ML Models", "Data Visualization & Power BI", "EDA"]
   },
   {
@@ -53,17 +61,17 @@ const Work = () => {
         {experiences.map((exp, index) => (
           <div className="timeline-item" key={index}>
             {/* Animated Node */}
-            <div className="timeline-node">
+            <div className={`timeline-node ${exp.current ? 'node-active' : ''}`}>
               <motion.div
                 className="node-pulse"
                 animate={{ scale: [1, 2, 1], opacity: [0.5, 0, 0.5] }}
-                transition={{ duration: 2, repeat: Infinity }}
+                transition={{ duration: exp.current ? 1.2 : 2, repeat: Infinity }}
               />
             </div>
 
             {/* Holographic Card */}
             <motion.div
-              className="timeline-card"
+              className={`timeline-card ${exp.current ? 'card-active' : ''}`}
               initial={{
                 opacity: 0,
                 x: index % 2 === 0 ? -50 : 50,
@@ -82,6 +90,15 @@ const Work = () => {
                   <h3>{exp.title}</h3>
                   <span className="company">{exp.company}</span>
                 </div>
+                {exp.current && (
+                  <motion.span
+                    className="active-badge"
+                    animate={{ opacity: [1, 0.4, 1] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    ● ACTIVE
+                  </motion.span>
+                )}
               </div>
 
               <span className="card-date">{exp.date}</span>
